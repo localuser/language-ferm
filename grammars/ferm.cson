@@ -1,0 +1,99 @@
+fileTypes: [
+  "ferm"
+  "ferm.conf"
+]
+name: "ferm"
+patterns: [
+  {
+    include: "#comment"
+  }
+  {
+    include: "#includes"
+  }
+  {
+    include: "#actions"
+  }
+  {
+    include: "#chains"
+  }
+  {
+    include: "#interfaces"
+  }
+  {
+    include: "#variables"
+  }
+  {
+    include: "#defines"
+  }
+  {
+    include: "#modules"
+  }
+  {
+    include: "#proto"
+  }
+  {
+    include: "#ips"
+  }
+]
+repository:
+  actions:
+    captures:
+      "1":
+        name: "keyword.control.ferm"
+    match: "([A-Z]+);"
+  chains:
+    captures:
+      "1":
+        name: "constant.other.ferm"
+      "2":
+        name: "keyword.other.ferm"
+    match: "(chain)\\s+([A-Za-z0-9_]+)"
+  comment:
+    captures:
+      "1":
+        name: "comment.line.number-sign.ferm"
+    match: "(#.*)"
+  defines:
+    captures:
+      "1":
+        name: "keyword.other.ferm"
+    match: "(@def)\\s+"
+  includes:
+    captures:
+      "1":
+        name: "keyword.other.ferm"
+      "2":
+        name: "string.quoted.ferm"
+    match: "(@include)\\s+('[.*\\w\\.\\/_-]+')"
+  interfaces:
+    captures:
+      "1":
+        name: "support.constant.ferm"
+      "2":
+        name: "variable.parameter.ferm"
+    match: "(interface|outerface)\\s+([a-z0-9]+|\\$[A-Za-z][A-Za-z0-9_]+)?"
+  ips:
+    match: "(?:[0-9]{1,3}\\.){3}[0-9]{1,3}"
+    name: "constant.numeric.ferm"
+  modules:
+    captures:
+      "1":
+        name: "keyword.control.ferm"
+      "2":
+        name: "support.constant.ferm"
+      "3":
+        name: "support.constant.ferm"
+    match: "(mod)\\s+(\\w+)\\s+([\\w-]+)"
+  proto:
+    captures:
+      "1":
+        name: "keyword.control.ferm"
+      "2":
+        name: "support.constant.ferm"
+      "3":
+        name: "support.constant.ferm"
+    match: "(proto|protocol)\\s+(\\w+)\\s+"
+  variables:
+    match: "\\$[A-Za-z][A-Za-z0-9_]+"
+    name: "variable.parameter.ferm"
+scopeName: "source.ferm"
