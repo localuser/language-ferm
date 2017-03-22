@@ -1,10 +1,10 @@
 {
   "name": "language-ferm",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "A ferm grammar package for the Atom text editor",
   "keywords": [
   ],
-  "repository": "https://github.com/atom/language-ferm",
+  "repository": "https://github.com/localuser/language-ferm",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
